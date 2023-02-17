@@ -1,8 +1,8 @@
-/* terraform {
+terraform {
   required_providers {
     snowflake = {
       source  = "Snowflake-Labs/snowflake"
-      version = "~> 0.35"
+      version = "~> 0.56.3"
     }
     snowsql = {
       source  = "aidanmelen/snowsql"
@@ -15,35 +15,35 @@ provider "snowflake" {
   alias    = "securityadmin"
   username = var.snowflake_username
   account  = var.snowflake_account
-  region   = var.snowflake_region
-  password = var.snowflake_password
-  role     = "SECURITYADMIN"
+  /* region   = var.snowflake_region */
+  private_key_path = var.snowflake_private_key_path
+  role             = "SECURITYADMIN"
 }
 
 provider "snowflake" {
   alias    = "useradmin"
   username = var.snowflake_username
   account  = var.snowflake_account
-  region   = var.snowflake_region
-  password = var.snowflake_password
-  role     = "USERADMIN"
+  /* region   = var.snowflake_region */
+  private_key_path = var.snowflake_private_key_path
+  role             = "USERADMIN"
 }
 
 provider "snowflake" {
   alias    = "sysadmin"
   username = var.snowflake_username
   account  = var.snowflake_account
-  region   = var.snowflake_region
-  password = var.snowflake_password
-  role     = "SYSADMIN"
+  /* region   = var.snowflake_region */
+  private_key_path = var.snowflake_private_key_path
+  role             = "SYSADMIN"
 }
 
 provider "snowsql" {
-  alias     = "securityadmin"
-  username  = var.snowflake_username
-  account   = var.snowflake_account
-  region    = var.snowflake_region
-  password  = var.snowflake_password
-  role      = "SECURITYADMIN"
-  warehouse = "COMPUTE_WH"
-} */
+  alias    = "securityadmin"
+  username = var.snowflake_username
+  account  = var.snowflake_account
+  /* region    = var.snowflake_region */
+  private_key_path = var.snowflake_private_key_path
+  role             = "SECURITYADMIN"
+  warehouse        = "COMPUTE_WH"
+}
