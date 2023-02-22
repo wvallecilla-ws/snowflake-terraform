@@ -16,27 +16,16 @@ terraform {
 }
 
 provider "snowflake" {
+  alias            = "sysadmin"
+  username         = var.snowflake_username
+  account          = var.snowflake_account
+  region           = var.snowflake_region
+  private_key_path = var.snowflake_private_key_path
+  role             = "SYSADMIN"
 }
 
 resource "snowflake_database" "demo_db" {
-  name    = "DEMO_DB"
-  comment = "Database for Snowflake Terraform demo"
-}
-
-resource "snowflake_schema" "demo_schema" {
-  database = snowflake_database.demo_db.name
-  name     = "DEMO_SCHEMA"
-  comment  = "Schema for Snowflake Terraform demo"
-}
-
-resource "snowflake_schema" "demo_schema_main" {
-  database = snowflake_database.demo_db.name
-  name     = "DEMO_SCHEMA_MAIN"
-  comment  = "Schema for Snowflake Terraform demo"
-}
-
-resource "snowflake_schema" "demo_schema_feature01" {
-  database = snowflake_database.demo_db.name
-  name     = "DEMO_SCHEMA_FEATURE01"
-  comment  = "Schema for Snowflake Terraform demo"
+  provider = snowflake.sysadmin
+  name     = "DEMO_DB"
+  comment  = "Database for Snowflake Terraform demo"
 }
