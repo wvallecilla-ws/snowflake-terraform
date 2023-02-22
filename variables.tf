@@ -23,17 +23,16 @@ variable "snowflake_region" {
 variable "company" {
   type        = string
   description = "Woodside"
-  default   = "Woodside"
+  default     = "Woodside"
 }
 variable "project" {
   type        = string
   description = "Data Technology"
-  default   = "Data Technology"
+  default     = "Data Technology"
 }
 
 variable "billing_code" {
   type        = string
   description = "Billing Code"
-  default   = "99887766"
+  default     = "99887766"
 }
-
